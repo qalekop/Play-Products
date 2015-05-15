@@ -29,5 +29,6 @@ public class ProductTest {
         Form<Product> form = Form.form(Product.class).fill(product);
 
         assertThat(form.value().get().name).isEqualTo(NAME);
+        assertThat(form.field(FIELD_NAME).value()).isEqualTo(NAME);
     }
 }

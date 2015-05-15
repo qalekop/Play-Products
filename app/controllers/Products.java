@@ -30,7 +30,6 @@ public class Products extends Controller {
             return notFound(String.format("Product %s does not exist.", ean));
         }
         System.out.println("-- found product name=" + product.name);
-//        Form<Product> filledForm = Form.form(Product.class).fill(product);
         return ok(details.render(Form.form(Product.class).fill(product)));
     }
 
