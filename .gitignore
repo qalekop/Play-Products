@@ -3,6 +3,12 @@ project/project
 project/target
 target
 tmp
+*.log
+*.sbt
+build.properties
+*.log.*
+.sbtserver
+*.lock
 .history
 dist
 /.idea
