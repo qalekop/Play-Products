@@ -29,7 +29,7 @@ public class Products extends Controller {
         if (product == null) {
             return notFound(String.format("Product %s does not exist.", ean));
         }
-        System.out.println("-- found product name=" + product.name);
+        System.out.println("-- found product name=" + product.getName());
         return ok(details.render(Form.form(Product.class).fill(product)));
     }
 

@@ -17,18 +17,18 @@ public class ProductTest {
     public void find() {
         Product product = Product.find(EAN);
         assertThat(product).isNotNull();
-        assertThat(product.name).isEqualToIgnoringCase(NAME);
+        assertThat(product.getName()).isEqualToIgnoringCase(NAME);
     }
 
     @Test
     public void fill() {
         Product product = Product.find(EAN);
         assertThat(product).isNotNull();
-        assertThat(product.name).isEqualToIgnoringCase(NAME);
+        assertThat(product.getName()).isEqualToIgnoringCase(NAME);
 
         Form<Product> form = Form.form(Product.class).fill(product);
 
-        assertThat(form.value().get().name).isEqualTo(NAME);
+//        assertThat(form.value().get().getName()).isEqualTo(NAME);
         assertThat(form.field(FIELD_NAME).value()).isEqualTo(NAME);
     }
 }

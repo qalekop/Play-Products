@@ -12,13 +12,13 @@
         <tbody>
     @for(product <- products) {
         <tr>
-            <td><a href="@routes.Products.details(product.ean)">
-            @product.ean
+            <td><a href="@routes.Products.details(product.getEan)">
+            @product.getEan
             </a></td>
-            <td><a href="@routes.Products.details(product.ean)">
-            @product.name</a></td>
-            <td><a href="@routes.Products.details(product.ean)">
-            @product.description</a></td>
+            <td><a href="@routes.Products.details(product.getEan)">
+            @product.getName</a></td>
+            <td><a href="@routes.Products.details(product.getEan)">
+            @product.getDescription</a></td>
         </tr>
     }
         </tbody>

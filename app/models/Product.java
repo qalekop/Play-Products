@@ -12,14 +12,14 @@ import java.util.function.Predicate;
  */
 public class Product {
     @Constraints.Required
-    public int ean;
+    private int ean;
 
     @Constraints.Required
-    public String name;
+    private String name;
 
-    public String description;
+    private String description;
 
-    private static List<Product> products = new ArrayList<Product>(5);
+    private static List<Product> products = new ArrayList<>(5);
     static {
         products.add(new Product("Paperclips 1", 1, "Paperclips description 1"));
         products.add(new Product("Paperclips 2", 2, "Paperclips description 2"));
@@ -67,6 +67,30 @@ public class Product {
 
     public void save() {
         products.remove(find(this.ean));
-        products.add(this);;
+        products.add(this);
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getEan() {
+        return ean;
+    }
+
+    public void setEan(int ean) {
+        this.ean = ean;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
