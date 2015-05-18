@@ -43,6 +43,6 @@ public class Products extends Controller {
         Product product = boundForm.get();
         product.save();
         flash("success", String.format("Successfully added product %s", product));
-        return redirect("/products/");
+        return redirect(routes.Products.list());
     }
 }

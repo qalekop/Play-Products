@@ -4,7 +4,7 @@
     <h1>Product form</h1>
     @form(routes.Products.save()) {
         <fieldset>
-            <legend>Product (@productForm("name").valueOr("New")</legend>
+            <legend>Product (@productForm("name").valueOr("New"))</legend>
             @inputText(productForm("name"), '_label -> "Name", 'placeholder -> "Product name")
             @inputText(productForm("ean"), '_label -> "EAN", 'placeholder -> "Product ean")
             @textarea(productForm("description"), '_label -> "Description")
