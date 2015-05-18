@@ -11,6 +11,7 @@ GET         /products/            controllers.Products.list()
 GET         /products/new         controllers.Products.newProduct()
 GET         /products/:ean        controllers.Products.details(ean: Integer)
 POST        /products/            controllers.Products.save()
+DELETE      /products/:ean        controllers.Products.delete(ean: Integer)
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file         controllers.Assets.at(path="/public", file)
