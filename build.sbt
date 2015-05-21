@@ -1,8 +1,8 @@
-name := """play-1"""
+name := """Products"""
 
 version := "1.0-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(play.PlayJava)
+lazy val root = (project in file(".")).enablePlugins(PlayJava)
 
 scalaVersion := "2.11.1"
 
