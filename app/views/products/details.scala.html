@@ -1,4 +1,4 @@
-@(productForm: Form[Product])
+@(productForm: Form[Product], types: Array[ProductTypeEnum], product: Product)
 @import helper._
 @main("Product form") {
     <h1>Product form</h1>
@@ -8,6 +8,13 @@
             @inputText(productForm("name"), '_label -> "Name", 'placeholder -> "Product name")
             @inputText(productForm("ean"), '_label -> "EAN", 'placeholder -> "Product ean")
             @textarea(productForm("description"), '_label -> "Description")
+            @for(_type <- types) {
+                <input type="checkbox" id="@_type.name()" name="@_type.name()" value="@_type.name()"
+                    @for(productType <- product.getTypes()) {
+                        @if(productType.name() == _type.name()) { checked }
+                    } >
+                <label for="@_type.name()">@_type.getDescription</label><br/>
+            }
         </fieldset>
         <input type="submit" class="btn btn-primary" value="Save">
         <a class="btn" href="@routes.Products.list()">Cancel</a>
