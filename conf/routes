@@ -3,10 +3,10 @@
 # ~~~~
 
 # Products stuff
-GET         /                       controllers.Products.index()
+GET         /                     controllers.Products.index()
 GET         /products/            controllers.Products.list(page: Integer ?= 1)
 GET         /products/new         controllers.Products.newProduct()
-GET         /products/:ean        controllers.Products.details(ean: Integer)
+GET         /products/:ean        controllers.Products.details(ean: models.Product)
 POST        /products/            controllers.Products.save()
 DELETE      /products/:ean        controllers.Products.delete(ean: Integer)
 

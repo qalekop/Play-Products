@@ -39,6 +39,12 @@ public class Products extends Controller {
         return ok(details.render(Form.form(Product.class).fill(product), ProductTypeEnum.values(), product));
     }
 
+    public static Result details(Product product) {
+        System.out.println("-- details for name=" + product.getName());
+        System.out.println("-- found product ean=" + product.getEan());
+        return ok(details.render(Form.form(Product.class).fill(product), ProductTypeEnum.values(), product));
+    }
+
     public static Result save() {
         System.out.println("-- save product called --");
         Form<Product> boundForm = productForm.bindFromRequest();

@@ -1,6 +1,7 @@
 package models;
 
 import play.data.validation.Constraints;
+import play.mvc.PathBindable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import static models.ProductTypeEnum.*;
 /**
  * Created by akopylov on 13.05.2015.
  */
-public class Product {
+public class Product implements PathBindable<Product> {
     @Constraints.Required
     private int ean;
 
@@ -27,11 +28,11 @@ public class Product {
 
     private static List<Product> products = new ArrayList<>(5);
     static {
-        products.add(new Product("Paperclips 1", 1, "Paperclips description 1", STONE));
-        products.add(new Product("Paperclips 2", 2, "Paperclips description 2"));
-        products.add(new Product("Paperclips 3", 3, "Paperclips description 3", SCISSORS, LIZARD));
-        products.add(new Product("Paperclips 4", 4, "Paperclips description 4", STONE, PAPER, SPOCK));
-        products.add(new Product("Paperclips 5", 5, "Paperclips description 5", LIZARD, SPOCK));
+        products.add(new Product("Paperclips1", 1, "Paperclips description 1", STONE));
+        products.add(new Product("Paperclips2", 2, "Paperclips description 2"));
+        products.add(new Product("Paperclips3", 3, "Paperclips description 3", SCISSORS, LIZARD));
+        products.add(new Product("Paperclips4", 4, "Paperclips description 4", STONE, PAPER, SPOCK));
+        products.add(new Product("Paperclips5", 5, "Paperclips description 5", LIZARD, SPOCK));
     }
 
     public Product(String name, int ean, String description, ProductTypeEnum... types) {
@@ -111,5 +112,20 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public Product bind(String s, String name) {
+        return find(name);
+    }
+
+    @Override
+    public String unbind(String s) {
+        return this.name;
+    }
+
+    @Override
+    public String javascriptUnbind() {
+        return this.name;
     }
 }

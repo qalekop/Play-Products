@@ -13,15 +13,15 @@
         <tbody>
     @for(product <- products) {
         <tr>
-            <td><a href="@routes.Products.details(product.getEan)">
+            <td><a href="@routes.Products.details(product)">
             @product.getEan
             </a></td>
-            <td><a href="@routes.Products.details(product.getEan)">
+            <td><a href="@routes.Products.details(product)">
             @product.getName</a></td>
-            <td><a href="@routes.Products.details(product.getEan)">
+            <td><a href="@routes.Products.details(product)">
             @product.getDescription</a></td>
             <td>
-                <a href="@routes.Products.details(product.getEan)">
+                <a href="@routes.Products.details(product)">
                     <i class="icon icon-pencil"></i>details</a>
                 <a onclick="del('@routes.Products.delete(product.getEan)')">
                     <i class="icon icon-trash"></i>delete</a>
