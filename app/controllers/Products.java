@@ -5,6 +5,7 @@ import models.ProductTypeEnum;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.Logger;
 import play.mvc.With;
 import views.html.products.details;
 import views.html.products.list;
@@ -25,28 +26,27 @@ public class Products extends Controller {
     }
 
     public static Result newProduct() {
-        System.out.println("-- new product called --");
+        Logger.info("-- new product called --");
         return ok(details.render(productForm, ProductTypeEnum.values(), new Product()));
     }
 
     public static Result details(int ean) {
-        System.out.println("-- details for ean=" + ean);
+        Logger.info("-- details for ean=" + ean);
         final Product product = Product.find(ean);
         if (product == null) {
             return notFound(String.format("Product %s does not exist.", ean));
         }
-        System.out.println("-- found product name=" + product.getName());
+        Logger.info("-- found product name=" + product.getName());
         return ok(details.render(Form.form(Product.class).fill(product), ProductTypeEnum.values(), product));
     }
 
     public static Result details(Product product) {
-        System.out.println("-- details for name=" + product.getName());
-        System.out.println("-- found product ean=" + product.getEan());
+        Logger.info("-- details for name=" + product.getName());
         return ok(details.render(Form.form(Product.class).fill(product), ProductTypeEnum.values(), product));
     }
 
     public static Result save() {
-        System.out.println("-- save product called --");
+        Logger.info("-- save product called --");
         Form<Product> boundForm = productForm.bindFromRequest();
         if(boundForm.hasErrors()) {
             flash("error", "Please correct the form below.");

@@ -4,6 +4,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
+                <th>#</th>
                 <th>EAN</th>
                 <th>Name</th>
                 <th>Description</th>
@@ -11,8 +12,9 @@
             </tr>
         </thead>
         <tbody>
-    @for(product <- products) {
+    @for((product, i) <- products.zipWithIndex) {
         <tr>
+            <td>@i</td>
             <td><a href="@routes.Products.details(product)">
             @product.getEan
             </a></td>
@@ -22,14 +24,14 @@
             @product.getDescription</a></td>
             <td>
                 <a href="@routes.Products.details(product)">
-                    <i class="icon icon-pencil"></i>details</a>
+                    <i class="glyphicon-pencil"></i>details</a>
                 <a onclick="del('@routes.Products.delete(product.getEan)')">
-                    <i class="icon icon-trash"></i>delete</a>
+                    <i class="glyphicon-trash"></i>delete</a>
             </td>
         </tr>
     }
         </tbody>
     </table>
     <a href="@routes.Products.newProduct()" class="btn">
-        <i class="icon-plus"></i>New product</a>
+        <i class="glyphicon-plus"></i>New product</a>
 }

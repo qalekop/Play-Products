@@ -7,7 +7,7 @@ public enum ProductTypeEnum {
     STONE("pierre")
     , SCISSORS("ciseaux")
     , PAPER("papier")
-    , LIZARD("l?zard")
+    , LIZARD("l\u00e9zard")
     , SPOCK("Spock")
     ;
 
