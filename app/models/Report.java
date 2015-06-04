@@ -22,14 +22,13 @@ public class Report {
 
     public void execute() {
         long start = System.currentTimeMillis();
-        Logger.info("starting intensive " + name + " report at " + start);
+        Logger.info("starting intensive \"" + name + "\" report at " + start);
         try {
             Thread.sleep(duration * MILLISECS_IN_SEC);
         } catch(Exception e) {
             // do nothing
         }
-        Logger.info("done with intensive " + name + " report ");
-        Logger.info("took " + ((System.currentTimeMillis() - start) / MILLISECS_IN_SEC) + "s");
+        Logger.info(String.format("Done with intensive \"%s\" report; took %d s", name, ((System.currentTimeMillis() - start) / MILLISECS_IN_SEC)));
     }
 
     public String toString() {

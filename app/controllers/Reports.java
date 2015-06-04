@@ -12,10 +12,9 @@ import views.html.products.report;
 public class Reports extends Controller {
 
     public static Promise<Result> index() {
-        Promise<Report> promiseOfKPIReport = Promise.promise(Reports::intensiveKPIReport);
-        Promise<Report> promiseOfETAReport = Promise.promise(Reports::intensiveETAReport);
-
-        return Promise.sequence(promiseOfKPIReport, promiseOfETAReport).map(reports -> ok(report.render(reports)));
+        return Promise.sequence(Promise.promise(Reports::intensiveKPIReport)
+                , Promise.promise(Reports::intensiveETAReport))
+                .map(reports -> ok(report.render(reports)));
     }
 
     public static Report intensiveKPIReport() {
