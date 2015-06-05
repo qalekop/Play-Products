@@ -1,0 +1,30 @@
+@main("Reports") {
+    <h2>Reports</h2>
+    <div id="warning">
+        Please wait until reports are ready...
+        <img src="@routes.Assets.at("images/wait.gif")"/>
+    </div>
+    <ul class="hidden">
+    </ul>
+    <script type="text/javascript">
+        if (window.console) {
+            console.log("Reports.js loaded");
+        }
+
+    $(function() {
+        var WS = window['MozWebSocket'] ? MozWebSocket : WebSocket;
+        if (!WS) {
+            console.log("Oops! No WebSockets available!");
+            return;
+        }
+        var socket = new WS("@routes.Reports.updateReports.webSocketURL(request)");
+        if (socket) {
+            socket.onmessage = function (event) {
+                $("#warning").hide();
+                $("ul").removeClass("hidden").append(event.data);
+                console.log("*** " + event.data);
+            }
+        }
+    })
+    </script>
+}
