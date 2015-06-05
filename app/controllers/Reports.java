@@ -33,14 +33,12 @@ public class Reports extends Controller {
             public void onReady(In<String> in, Out<String> out) {
                 Promise intensiveKPIReport = Promise.promise(Reports::intensiveKPIReport);
                 Promise intensiveETAReport = Promise.promise(Reports::intensiveETAReport);
-                intensiveKPIReport.onRedeem(report -> out.write(String.format(REPORT_LINK, report.toString())));
-                intensiveETAReport.onRedeem(report -> out.write(String.format(REPORT_LINK, report.toString())));
+                intensiveKPIReport.onRedeem(report -> out.write(buildReportLink((Report) report)));
+                intensiveETAReport.onRedeem(report -> out.write(buildReportLink((Report) report)));
                 Promise.sequence(intensiveKPIReport, intensiveETAReport).onRedeem(reports -> out.close());
 
                 in.onMessage(event -> Logger.info("*** onMessage:" + event + "."));
                 in.onClose(() -> Logger.info("Disconnected"));
-//                out.write("Hello client!");
-                // todo: out.close();
             }
         };
     }
