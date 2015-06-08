@@ -1,3 +1,5 @@
 Playing with sample application taken from "Play for Java/Covers Play 2" by Nicolas Leroux & Sietse Kaper, ISBN 9781617290909.
 
 Doesn't work (even compile!) right off-the-shelf :(.
+
+RESTful API considerations to be followed: https://cdivilly.wordpress.com/2014/03/11/why-trailing-slashes-on-uris-are-important/
